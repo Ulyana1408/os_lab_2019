@@ -1,0 +1,17 @@
+*.o
+
+# Исполняемые файлы лабы 3
+sequential_min_max
+parallel_min_max
+run_sequential
+
+# Временные файлы результатов
+result_*.txt
+
+# Скомпилированные библиотеки (лаба 2)
+*.a
+*.so
+solution
+static_solution
+dynamic_solution
+tests_runner
