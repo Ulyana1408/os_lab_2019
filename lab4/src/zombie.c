@@ -12,13 +12,13 @@ int main(void) {
     return 1;
   }
   if (pid == 0) {
-    printf("Ребёнок: PID=%d завершаюсь...\n");
+    printf("Ребёнок: PID=%d завершаюсь...\n", getpid());
     exit(0);
   }
 
   printf("Родитель: PID=%d, ребенок PID=%d\n", getpid(), pid);
   printf("Родитель: сплю 60 секунд, ребенок будет зомби\n");
-  printf("проверьте в другом терминале:ps aux| grep Z \n")
+  printf("проверьте в другом терминале:ps aux| grep Z \n");
   sleep(60); //зомби виден
   printf("Родитель: вызываю wait() - зомби исчезнет\n");
   wait(NULL); // зомби исчезает
