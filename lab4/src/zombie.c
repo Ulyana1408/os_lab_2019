@@ -7,16 +7,21 @@
 int main(void) {
   pid_t pid = fork();
 
+    if (pid == 0) {
+    perror("fork");
+    return 1;
+  }
   if (pid == 0) {
-    printf("Ребёнок: завершаюсь\n");
+    printf("Ребёнок: PID=%d завершаюсь...\n");
     exit(0);
   }
 
-  // сразу вызываем wait() — зомби не появится
-  wait(NULL);
-  printf("Родитель: wait() вызван, зомби нет\n");
-  printf("Родитель: сплю 30 секунд\n");
-  sleep(30);
+  printf("Родитель: PID=%d, ребенок PID=%d\n", getpid(), pid);
+  printf("Родитель: сплю 60 секунд, ребенок будет зомби\n");
+  printf("проверьте в другом терминале:ps aux| grep Z \n")
+  sleep(60); //зомби виден
+  printf("Родитель: вызываю wait() - зомби исчезнет\n");
+  wait(NULL); // зомби исчезает
   printf("Родитель: завершаюсь\n");
   return 0;
 }
